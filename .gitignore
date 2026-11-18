@@ -1,0 +1,7 @@
+# 部署忽略项
+.deploy_tmp/
+shots/
+tools/
+_backup/
+*.zip
+.DS_Store

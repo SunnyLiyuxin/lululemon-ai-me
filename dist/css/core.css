@@ -1,0 +1,428 @@
+/* ============================================================
+   LULULEMON AI ME · Design System
+   ============================================================ */
+
+:root{
+  /* 基础层 */
+  --paper:#FFFFFF;
+  --surface:#F7F5F2;
+  --surface-2:#EFEBE4;
+  --ink:#16150F;
+  --ink-2:#4B483D;
+  --ink-3:#8B8576;
+  --line:#E7E3DA;
+  --line-soft:#F0EDE7;
+
+  /* 品牌层 */
+  --lulu-red:#C8102E;
+  --clay:#AE4526;
+  --rose:#E8C4C0;
+  --rose-deep:#C98A83;
+  --blush:#FBF4F2;
+
+  /* 场景层 */
+  --park-green:#6E9B4E;
+  --park-green-2:#86B061;
+  --park-dark:#2F5138;
+  --court-green:#4E8F6B;
+  --track-red:#B5573F;
+  --water:#7FB3C8;
+  --sand:#E3D9C4;
+
+  /* 功能层 */
+  --gold:#A9741C;
+  --gold-soft:#F4E9D4;
+  --success:#3F7D4E;
+  --danger:#B23A3A;
+
+  /* 字体 */
+  --font-ui:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+  --font-serif:Georgia,"Iowan Old Style","Songti SC",serif;
+
+  /* 圆角 */
+  --r-pill:999px;
+  --r-xl:20px;
+  --r-lg:16px;
+  --r-md:12px;
+  --r-sm:10px;
+
+  /* 阴影 */
+  --shadow-1:0 2px 10px rgba(22,21,15,.05);
+  --shadow-2:0 8px 28px rgba(22,21,15,.10);
+  --shadow-pop:0 18px 50px rgba(22,21,15,.16);
+
+  /* 安全区 */
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  background:#EDEAE3;
+  font-family:var(--font-ui);
+  color:var(--ink);
+  font-size:14px;
+  line-height:1.45;
+  overscroll-behavior:none;
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit;font-size:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input{font-family:inherit;font-size:inherit;color:inherit;border:none;background:none;outline:none}
+img{display:block;max-width:100%}
+ul,ol{list-style:none}
+
+/* ---------- 手机外框（桌面预览用） ---------- */
+#device{
+  position:relative;
+  width:375px;height:812px;
+  margin:0 auto;
+  background:var(--paper);
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(22,21,15,.28);
+}
+@media (min-width:420px){
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
+  #device{border-radius:38px;max-height:calc(100vh - 40px)}
+}
+@media (max-width:419px){
+  #device{width:100vw;height:100vh;height:100dvh}
+}
+/* 短视口（截图/横屏）时压缩设备框，保证完整可见 */
+@media (min-width:420px) and (max-height:880px){
+  #device{height:calc(100vh - 40px);max-height:812px}
+}
+
+/* ---------- 页面容器 ---------- */
+.screen{
+  position:absolute;inset:0;
+  background:var(--paper);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+}
+.screen.scroll .screen-body{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.screen-body{
+  flex:1;min-height:0;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;
+  padding-bottom:0;
+}
+.pad-b{padding-bottom:calc(84px + var(--safe-b))}
+.pad-b-dock{padding-bottom:calc(96px + var(--safe-b))}
+
+/* ---------- lululemon 官方 Logo 锁定版式（严格按参考图：红圆白omega + 黑色粗体小写字标） ---------- */
+.lulu-logo{display:inline-flex;align-items:center;color:var(--ink)}
+.lulu-badge{
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+  border-radius:50%;background:#C8102E;color:#fff;
+}
+.lulu-badge svg{stroke:#fff;display:block}
+.lulu-word{font-weight:800;letter-spacing:-.02em;line-height:1}
+
+/* ---------- App Header ---------- */
+.appbar{
+  flex:none;
+  padding:calc(var(--safe-t) + 10px) 20px 10px;
+  background:var(--paper);
+  display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid var(--line-soft);
+  position:relative;z-index:20;
+}
+.appbar .brand{display:flex;align-items:center;flex:none}
+.appbar .brand .lulu-badge{box-shadow:none}
+.appbar .spacer{flex:1}
+.appbar .icons{display:flex;gap:18px;align-items:center}
+.appbar .icons svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.appbar .bell{position:relative}
+.appbar .bell::after{content:"";position:absolute;top:-1px;right:-2px;width:7px;height:7px;border-radius:50%;background:var(--lulu-red);border:1.5px solid var(--paper)}
+.appbar.back{padding-left:14px}
+.appbar.back .backbtn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;margin-left:-6px}
+.appbar.back .backbtn svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.appbar .title{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.appbar .rbtn{font-size:13px;font-weight:600;color:var(--ink-3);padding:6px 8px}
+
+/* ---------- 底部 Tab Bar ---------- */
+.tabbar{
+  position:absolute;left:0;right:0;bottom:0;z-index:30;
+  height:calc(64px + var(--safe-b));
+  padding-bottom:var(--safe-b);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--line-soft);
+  display:flex;
+}
+.tabbar .tab{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  position:relative;color:var(--ink-3);
+  transition:color .2s;
+}
+.tabbar .tab svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tabbar .tab span{font-size:10.5px;font-weight:600;letter-spacing:.01em}
+.tabbar .tab.on{color:var(--ink)}
+.tabbar .tab.on::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:22px;height:2px;background:var(--ink);border-radius:0 0 2px 2px;
+}
+
+/* ---------- 底部 Dock（广场专用） ---------- */
+.dock{
+  position:absolute;left:0;right:0;bottom:0;z-index:30;
+  height:calc(72px + var(--safe-b));
+  padding-bottom:var(--safe-b);
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px);
+  border-top:1px solid var(--line-soft);
+  display:flex;align-items:center;
+}
+.dock .ditem{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;
+  color:var(--ink-2);padding-top:2px;
+}
+.dock .ditem svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.dock .ditem span{font-size:9.5px;font-weight:600;line-height:1.15;text-align:center}
+.dock .ditem.on{color:var(--ink)}
+.dock .shotwrap{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+.dock .shot{
+  width:54px;height:54px;border-radius:50%;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  margin-top:-22px;
+  box-shadow:0 6px 18px rgba(22,21,15,.28);
+  transition:transform .12s;
+}
+.dock .shot:active{transform:scale(.93)}
+.dock .shot svg{width:24px;height:24px;stroke:#fff;stroke-width:1.6;fill:none}
+
+/* ---------- 按钮 ---------- */
+.btn{
+  display:flex;align-items:center;justify-content:center;
+  height:50px;padding:0 24px;
+  border-radius:var(--r-pill);
+  background:var(--ink);color:#fff;
+  font-size:15px;font-weight:700;letter-spacing:-.01em;
+  transition:transform .12s,opacity .2s;
+}
+.btn:active{transform:scale(.975)}
+.btn.ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--line)}
+.btn.soft{background:var(--surface-2);color:var(--ink)}
+.btn.sm{height:38px;padding:0 18px;font-size:13.5px}
+.btn.xs{height:30px;padding:0 14px;font-size:12px;font-weight:600}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.35;pointer-events:none}
+
+/* ---------- Chip ---------- */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  height:34px;padding:0 14px;
+  border-radius:var(--r-pill);
+  background:var(--paper);
+  border:1px solid var(--line);
+  font-size:12.5px;font-weight:600;color:var(--ink-2);
+  white-space:nowrap;flex:none;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.chip svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.on.soft{background:var(--surface-2);color:var(--ink)}
+.chip.mini{height:28px;padding:0 11px;font-size:11.5px}
+.chiprow{
+  display:flex;gap:8px;overflow-x:auto;padding:0 20px 4px;
+  scrollbar-width:none;
+  scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+}
+.chiprow::-webkit-scrollbar{display:none}
+.chiprow.nopad{padding-left:0;padding-right:0}
+
+/* ---------- 卡片 ---------- */
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  box-shadow:var(--shadow-1);
+}
+.sect{margin:22px 20px 0}
+.sect-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.sect-title{font-size:13px;font-weight:800;letter-spacing:.04em}
+.sect-more{font-size:12px;font-weight:600;color:var(--ink-2);display:flex;align-items:center;gap:2px}
+.sect-more svg{width:13px;height:13px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 商品卡（横向） ---------- */
+.prodrow{
+  display:flex;align-items:center;gap:11px;
+  padding:9px;border:1px solid var(--line);border-radius:var(--r-md);
+  background:var(--paper);
+}
+.prodrow .pimg{
+  width:56px;height:56px;flex:none;border-radius:var(--r-sm);
+  background:var(--blush);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.prodrow .pimg img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.prodrow .pmeta{flex:1;min-width:0}
+.prodrow .pname{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prodrow .pprice{font-size:13px;font-weight:700;color:var(--lulu-red);margin-top:2px}
+.prodrow .pview{font-size:11px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:1px;margin-top:3px}
+.prodrow .pview svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 商品缩略格 ---------- */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pcell{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);
+  overflow:hidden;position:relative;
+}
+.pcell .pi{aspect-ratio:1;background:var(--blush);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pcell .pi img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.pcell .pn{font-size:11.5px;font-weight:600;padding:6px 8px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcell .pp{font-size:11px;color:var(--lulu-red);font-weight:700;padding:2px 8px 8px}
+.pcell .tag{
+  position:absolute;top:6px;left:6px;
+  width:19px;height:19px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:#fff;
+}
+.pcell .tag svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.pcell .tag.wish{background:var(--paper);border:1.5px solid var(--ink);color:var(--ink)}
+.pcell .tag.unl{background:var(--gold-soft);color:var(--gold)}
+.pcell .tag.unl svg{stroke-width:1.8}
+
+/* ---------- 设置行（Outfit Matching 三行式） ---------- */
+.setrow{
+  display:flex;align-items:center;gap:11px;
+  height:52px;padding:0 14px;
+  background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--r-md);
+  margin-bottom:8px;
+}
+.setrow .sic{width:20px;height:20px;flex:none;display:flex;align-items:center;justify-content:center}
+.setrow .sic svg{width:19px;height:19px;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.setrow .slab{font-size:13.5px;font-weight:600;color:var(--ink-2);flex:none}
+.setrow .sval{margin-left:auto;font-size:13.5px;font-weight:700;color:var(--ink)}
+.setrow .chev{width:16px;height:16px;flex:none;stroke:var(--ink-3);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 进度条 ---------- */
+.pbar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;display:flex;gap:2px;padding:0}
+.pbar .seg{flex:1;background:var(--surface-2);border-radius:2px;overflow:hidden}
+.pbar .seg i{display:block;height:100%;background:var(--ink);border-radius:2px}
+
+/* ---------- Toast ---------- */
+#toast{
+  position:absolute;left:20px;right:20px;top:calc(var(--safe-t) + 60px);
+  z-index:200;pointer-events:none;
+}
+.toast{
+  background:var(--ink);color:#fff;
+  padding:11px 16px;border-radius:var(--r-md);
+  font-size:13px;font-weight:500;
+  box-shadow:var(--shadow-2);
+  transform:translateY(-14px);opacity:0;
+  transition:transform .24s cubic-bezier(.2,.75,.2,1),opacity .24s;
+}
+.toast.on{transform:translateY(0);opacity:1}
+
+/* ---------- Drawer ---------- */
+.scrim{
+  position:absolute;inset:0;z-index:90;
+  background:rgba(22,21,15,.42);
+  opacity:0;pointer-events:none;transition:opacity .22s;
+}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{
+  position:absolute;left:0;right:0;bottom:0;z-index:100;
+  background:var(--paper);
+  border-radius:24px 24px 0 0;
+  padding:10px 20px calc(20px + var(--safe-b));
+  transform:translateY(100%);
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+  box-shadow:var(--shadow-pop);
+  max-height:82%;overflow-y:auto;
+}
+.drawer.on{transform:translateY(0)}
+.drawer .grab{width:38px;height:4px;border-radius:2px;background:var(--surface-2);margin:0 auto 14px}
+
+/* ---------- 底部固定 CTA ---------- */
+.footbar{
+  position:absolute;left:0;right:0;bottom:0;z-index:25;
+  padding:12px 20px calc(14px + var(--safe-b));
+  background:linear-gradient(to top,var(--paper) 62%,rgba(255,255,255,0));
+}
+
+/* ---------- 头像 ---------- */
+.av{
+  border-radius:50%;overflow:hidden;flex:none;
+  background:var(--blush);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.av img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.av.ring{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--rose)}
+.av .ini{
+  width:100%;height:100%;border-radius:50%;
+  background:var(--surface-2);color:var(--ink-2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;
+}
+
+/* ---------- 角色立绘 ---------- */
+.figure{position:relative;display:flex;align-items:flex-end;justify-content:center}
+.figure img{max-height:100%;width:auto;object-fit:contain}
+.figure .shadow{
+  position:absolute;left:50%;bottom:2%;transform:translateX(-50%);
+  width:52%;height:14px;border-radius:50%;
+  background:rgba(22,21,15,.13);filter:blur(6px);
+}
+.figure.mood-happy img{animation:bob 2.4s ease-in-out infinite}
+.figure.mood-tired img{filter:saturate(.85) brightness(.97)}
+.figure.mood-calm img{filter:saturate(.95)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ---------- 通用工具 ---------- */
+.row{display:flex;align-items:center;gap:10px}
+.col{display:flex;flex-direction:column}
+.grow{flex:1;min-width:0}
+.muted{color:var(--ink-3)}
+.tiny{font-size:11px}
+.small{font-size:12px}
+.center{text-align:center}
+.serif{font-family:var(--font-serif);font-style:italic}
+.hide{display:none!important}
+
+/* ---------- 页面切换动画 ---------- */
+@keyframes slideIn{from{transform:translateX(24px);opacity:0}to{transform:none;opacity:1}}
+@keyframes slideOut{from{transform:none;opacity:1}to{transform:translateX(-16px);opacity:0}}
+@keyframes fadeUp{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
+.screen.enter{animation:slideIn .24s cubic-bezier(.22,1,.36,1)}
+.screen.leave{animation:slideOut .2s ease forwards}
+.reveal{animation:fadeUp .42s cubic-bezier(.22,1,.36,1) both}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.12s!important;transition-duration:.12s!important}
+}
+
+/* ============================================================
+   LULULEMON AI ME · 实时 Avatar 引擎样式
+   ============================================================ */
+.av{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:visible}
+.av-inner{position:relative;height:100%;aspect-ratio:720/1120;transform-origin:50% 100%;transform:scaleY(var(--sy,1)) scaleX(var(--sx,1));transition:transform .38s cubic-bezier(.22,1,.36,1)}
+.av-body{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 10px 22px rgba(22,21,15,.16))}
+.av-hair{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:var(--hairfilter,none);transition:filter .35s ease;pointer-events:none}
+.av-mask{position:absolute;left:0;bottom:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;opacity:0;pointer-events:none}
+.av-face{position:absolute;inset:0;z-index:2;pointer-events:none}
+.av-face .f-svg{width:100%;height:100%;overflow:visible;display:block}
+.av-acc{position:absolute;z-index:3;object-fit:contain;pointer-events:none;filter:drop-shadow(0 4px 10px rgba(22,21,15,.22))}
+.av-flash .av-inner{animation:avpop .42s cubic-bezier(.22,1,.36,1)}
+@keyframes avpop{0%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) scale(.965)}100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) scale(1)}}
+
+.pose-bounce .av-inner{animation:avBounce 1.9s ease-in-out infinite}
+@keyframes avBounce{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0)}50%{transform:scaleY(calc(var(--sy,1)*1.012)) scaleX(var(--sx,1)) translateY(-1.6%)}}
+.pose-jump .av-inner{animation:avJump 1.15s cubic-bezier(.3,.9,.4,1) infinite}
+@keyframes avJump{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0)}42%{transform:scaleY(calc(var(--sy,1)*.975)) scaleX(var(--sx,1)) translateY(0)}55%{transform:scaleY(calc(var(--sy,1)*1.03)) scaleX(var(--sx,1)) translateY(-6%)}}
+.pose-cheer .av-inner{animation:avCheer 1.05s ease-in-out infinite}
+@keyframes avCheer{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0) rotate(0deg)}30%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(-4%) rotate(-2.2deg)}65%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(-2%) rotate(2.2deg)}}
+.pose-slump .av-inner{animation:avSlump 3.4s ease-in-out infinite}
+@keyframes avSlump{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0) rotate(0deg)}50%{transform:scaleY(calc(var(--sy,1)*.985)) scaleX(var(--sx,1)) translateY(1.4%) rotate(-1.1deg)}}
+.pose-breathe .av-inner{animation:avBreathe 4.2s ease-in-out infinite}
+@keyframes avBreathe{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0)}50%{transform:scaleY(calc(var(--sy,1)*1.014)) scaleX(var(--sx,1)) translateY(-.9%)}}
+.pose-still .av-inner{animation:avStill 2.6s ease-in-out infinite}
+@keyframes avStill{0%,100%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(0)}50%{transform:scaleY(var(--sy,1)) scaleX(var(--sx,1)) translateY(-.5%)}}
+
