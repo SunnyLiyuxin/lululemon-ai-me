@@ -1,4 +1,5 @@
 # 部署忽略项
+dist/
 .deploy_tmp/
 shots/
 tools/
