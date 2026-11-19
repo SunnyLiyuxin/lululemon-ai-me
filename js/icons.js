@@ -91,13 +91,8 @@ function omegaSolid(size) {
   return `<svg viewBox="0 0 100 100" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="9.6" stroke-linecap="round" stroke-linejoin="round"><path d="${LULU_OMEGA_PATH}"/></svg>`;
 }
 
-/* lululemon 官方 logo 锁定版式（严格按用户参考图）：
-   红色圆形（#C8102E）内白色 omega 符号 + 黑色小写粗体 lululemon 字标 */
+/* lululemon 官方 logo：直接使用参考图完整抠图位图（非矢量重构） */
 function luluLogo(size) {
-  const s = size || 24;
-  const badge = Math.round(s);
-  const word = Math.round(s * 0.72);
-  return `<span class="lulu-logo" style="gap:${Math.max(6, Math.round(s * 0.3))}px">` +
-    `<span class="lulu-badge" style="width:${badge}px;height:${badge}px">${omegaSolid(Math.round(badge * 0.58))}</span>` +
-    `<b class="lulu-word" style="font-size:${word}px">lululemon</b></span>`;
+  const h = Math.round(size || 24);
+  return `<img class="lulu-logo-img" src="assets/img/lululemon_logo.png" style="height:${h}px" alt="lululemon">`;
 }

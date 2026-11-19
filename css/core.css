@@ -109,14 +109,8 @@ ul,ol{list-style:none}
 .pad-b{padding-bottom:calc(84px + var(--safe-b))}
 .pad-b-dock{padding-bottom:calc(96px + var(--safe-b))}
 
-/* ---------- lululemon 官方 Logo 锁定版式（严格按参考图：红圆白omega + 黑色粗体小写字标） ---------- */
-.lulu-logo{display:inline-flex;align-items:center;color:var(--ink)}
-.lulu-badge{
-  display:inline-flex;align-items:center;justify-content:center;flex:none;
-  border-radius:50%;background:#C8102E;color:#fff;
-}
-.lulu-badge svg{stroke:#fff;display:block}
-.lulu-word{font-weight:800;letter-spacing:-.02em;line-height:1}
+/* ---------- lululemon 官方 Logo（参考图完整抠图位图） ---------- */
+.lulu-logo-img{display:block;width:auto;flex:none}
 
 /* ---------- App Header ---------- */
 .appbar{
@@ -128,7 +122,7 @@ ul,ol{list-style:none}
   position:relative;z-index:20;
 }
 .appbar .brand{display:flex;align-items:center;flex:none}
-.appbar .brand .lulu-badge{box-shadow:none}
+.appbar .brand .lulu-logo-img{box-shadow:none}
 .appbar .spacer{flex:1}
 .appbar .icons{display:flex;gap:18px;align-items:center}
 .appbar .icons svg{width:20px;height:20px;stroke:var(--ink);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
@@ -391,6 +385,9 @@ ul,ol{list-style:none}
 @keyframes fadeUp{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pop{0%{transform:scale(.86);opacity:0}100%{transform:scale(1);opacity:1}}
+/* 带位移的弹出（用于绝对居中的名片弹窗，避免 keyframe 覆盖 translate；
+   不含 opacity，保证动画被节流冻结时卡片仍可见） */
+@keyframes popc{0%{transform:translate(-50%,-50%) scale(.86)}100%{transform:translate(-50%,-50%) scale(1)}}
 .screen.enter{animation:slideIn .24s cubic-bezier(.22,1,.36,1)}
 .screen.leave{animation:slideOut .2s ease forwards}
 .reveal{animation:fadeUp .42s cubic-bezier(.22,1,.36,1) both}

@@ -114,7 +114,7 @@ function renderHome(){
     .hero-bgimg{position:absolute;inset:0;background-size:cover;background-position:center}
     .hero-bgimg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,21,15,.72) 0%,rgba(22,21,15,.18) 55%,rgba(22,21,15,.35) 100%)}
     .hero-fig{position:absolute;right:-2%;bottom:0;height:100%;display:flex;align-items:flex-end}
-    .hero-fig img{height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}
+    .hero-fig img{height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 16px 26px rgba(0,0,0,.48)) drop-shadow(0 5px 10px rgba(0,0,0,.3)) drop-shadow(0 1px 3px rgba(0,0,0,.25))}
     .hero-txt{position:absolute;left:18px;top:18px;right:44%;z-index:3;color:#fff}
     .hero-txt h1{font-size:27px;font-weight:800;line-height:1.06;letter-spacing:-.03em;text-shadow:0 2px 14px rgba(0,0,0,.4)}
     .hero-txt p{font-size:12.5px;color:rgba(255,255,255,.85);margin-top:8px;line-height:1.4}

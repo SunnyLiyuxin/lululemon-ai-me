@@ -189,25 +189,25 @@ function renderAvatarCard(){
     <p class="ac-note">${icon('shield')} Only what ${u.name} chose to share is shown. No location, no real name.</p>
   </div>
   <style>
-    .acard{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(100% - 44px);max-width:320px;max-height:calc(100% - 96px);overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--paper);border-radius:24px;padding:24px 20px 18px;z-index:100;box-shadow:var(--shadow-pop);animation:pop .3s cubic-bezier(.2,.9,.3,1) both}
+    .acard{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(100% - 72px);max-width:268px;max-height:calc(100% - 56px);overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--paper);border-radius:20px;padding:18px 16px 13px;z-index:100;box-shadow:var(--shadow-pop);animation:popc .3s cubic-bezier(.2,.9,.3,1) both}
     .ac-back{position:absolute;top:calc(14px + var(--safe-t));left:16px;z-index:110;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px 0 10px;border-radius:var(--r-pill);background:rgba(255,255,255,.94);backdrop-filter:blur(6px);font-size:13px;font-weight:700;color:var(--ink);box-shadow:0 4px 14px rgba(22,21,15,.14);cursor:pointer}
     .ac-back svg{width:15px;height:15px;stroke:var(--ink);stroke-width:2;fill:none}
     .ac-top{display:flex;flex-direction:column;align-items:center;text-align:center}
-    .ac-av{width:82px;height:82px;box-shadow:0 0 0 3px var(--rose);border-radius:50%;overflow:hidden}
+    .ac-av{width:60px;height:60px;box-shadow:0 0 0 3px var(--rose);border-radius:50%;overflow:hidden}
     .ac-av img{width:100%;height:100%;object-fit:cover;object-position:center 8%}
-    .ac-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center}
-    .ac-close svg{width:14px;height:14px;stroke:var(--ink-2);stroke-width:2;fill:none}
-    .ac-nm{margin-top:11px;font-size:17px;font-weight:800;display:flex;align-items:center;gap:6px}
-    .ac-lv{font-size:10px;font-weight:800;color:var(--ink-3);background:var(--surface-2);padding:2px 7px;border-radius:var(--r-pill)}
-    .ac-bio{font-size:12.5px;color:var(--ink-2);margin-top:6px;line-height:1.4}
-    .ac-info{margin-top:16px;border-top:1px solid var(--line-soft)}
-    .ac-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line-soft)}
-    .ac-row span{font-size:12px;color:var(--ink-3)}
-    .ac-row b{margin-left:auto;font-size:13px;font-weight:700}
-    .ac-acts{display:flex;gap:8px;margin-top:16px}
-    .ac-acts .btn{flex:1;height:42px;font-size:12.5px;padding:0 10px}
-    .ac-note{display:flex;gap:6px;font-size:10.5px;color:var(--ink-3);margin-top:12px;line-height:1.4}
-    .ac-note svg{width:13px;height:13px;flex:none;stroke:var(--ink-3);stroke-width:1.5;fill:none;margin-top:1px}
+    .ac-close{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--surface-2);display:flex;align-items:center;justify-content:center}
+    .ac-close svg{width:13px;height:13px;stroke:var(--ink-2);stroke-width:2;fill:none}
+    .ac-nm{margin-top:9px;font-size:15px;font-weight:800;display:flex;align-items:center;gap:5px}
+    .ac-lv{font-size:9.5px;font-weight:800;color:var(--ink-3);background:var(--surface-2);padding:2px 6px;border-radius:var(--r-pill)}
+    .ac-bio{font-size:11.5px;color:var(--ink-2);margin-top:4px;line-height:1.35}
+    .ac-info{margin-top:11px;border-top:1px solid var(--line-soft)}
+    .ac-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line-soft)}
+    .ac-row span{font-size:11px;color:var(--ink-3)}
+    .ac-row b{margin-left:auto;font-size:11.5px;font-weight:700}
+    .ac-acts{display:flex;gap:7px;margin-top:12px}
+    .ac-acts .btn{flex:1;height:36px;font-size:11px;padding:0 8px}
+    .ac-note{display:flex;gap:5px;font-size:9.5px;color:var(--ink-3);margin-top:9px;line-height:1.35}
+    .ac-note svg{width:11px;height:11px;flex:none;stroke:var(--ink-3);stroke-width:1.5;fill:none;margin-top:1px}
   </style>`;
 }
 
